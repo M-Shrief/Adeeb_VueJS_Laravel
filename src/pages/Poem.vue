@@ -19,8 +19,10 @@
 <script setup>
 import {  onBeforeMount, computed, watch } from 'vue';
 import {useRoute, useRouter } from 'vue-router';
+// stores
 import { usePoemStore } from "../stores/poems";
 import { usePrintsStore } from "../stores/prints";
+// components
 import ShowCasePoem from "../components/ShowCasePoem.vue";
 import ShowCasePoems from "../components/ShowCasePoems.vue";
 import ShowCasePoet from "../components/ShowCasePoet.vue";

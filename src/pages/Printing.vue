@@ -19,9 +19,13 @@
           <p>{{preview.qoute}}</p>
         </div>
         <div v-else  :style="{color: fontColor, background: backgroundColor}">
-          <div v-for="print in preview" :key="print.id" class="verse">
+          <div v-if="preview[0]" v-for="print in preview" :key="print._id" class="verse">
             <p >{{print.first}}</p>
             <p dir="ltr">{{print.sec}}</p>
+          </div>
+          <div v-else class="verse">
+            <p >{{preview.first}}</p>
+            <p dir="ltr">{{preview.sec}}</p>
           </div>
         </div>
         <!-- @click="addOrder" -->
