@@ -26,7 +26,7 @@ export const usePoemStore = defineStore("poem",{
           console.log(error)
         }
       },
-      async fetchPoem(id) {
+      async fetchPoemAndOtherPoems(id) {
         try {
           let apiPoem = "http://localhost:8000/api/poem/" + id;
           let reqPoem = await axios.get(apiPoem);

@@ -6,15 +6,11 @@
     -->
     <slot />
     <div :class="grid">
-      <!-- used a tag to refresh the state in poem page
-          Note: you need to use createWebHistory as history method for routers
-          because it doesn't make a request to the server because of # when using createWebHashHistory
-      -->
-      <a v-for="poem in poems" :key="poem.id"
-        :href="`/poem/${poem.id}`" class="poem">
+      <router-link  v-for="poem in poems" :key="poem.id" 
+      :to="`/poem/${poem.id}`" class="poem" replace>
         <p v-if="poem.poet">{{poem.intro}} - {{poem.poet.name}}</p>
         <p v-else>{{poem.intro}}..</p>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

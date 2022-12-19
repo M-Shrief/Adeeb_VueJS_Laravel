@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import {  onBeforeMount, computed } from 'vue';
+import {  onBeforeMount, computed, watch } from 'vue';
 import {useRoute, useRouter } from 'vue-router';
 import { usePoemStore } from "../stores/poems";
 import { usePrintsStore } from "../stores/prints";
@@ -36,9 +36,14 @@ const getPoems = computed(() => {
   return poemStore.getPoems
 })
 
+// updating poems store
+watch(() => route.params.id, (newPoemId) => {
+  poemStore.fetchPoemAndOtherPoems(route.params.id);
+
+})
+
 onBeforeMount(() => {
-  poemStore.fetchPoem(route.params.id);
-  // poemStore.fetchOtherPoems(route.params.id);
+  poemStore.fetchPoemAndOtherPoems(route.params.id);
 })
 
 const printsStore = usePrintsStore();
