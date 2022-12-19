@@ -17,7 +17,7 @@ export const usePoetStore = defineStore("poet",{
     actions: {
       async fetchPoets() {
         try {
-          const req = await axios.get('http://localhost:3000/api/poets')
+          const req = await axios.get('http://localhost:8000/api/poets')
             this.poets = req.data
           }
           catch (error) {
@@ -27,7 +27,7 @@ export const usePoetStore = defineStore("poet",{
       },
       async fetchPoet(id) {
         try {
-          const apiUrl = "http://localhost:3000/api/poet/" + id;
+          const apiUrl = "http://localhost:8000/api/poet/" + id;
           const req = await axios.get(apiUrl)
             this.poet = req.data
           }

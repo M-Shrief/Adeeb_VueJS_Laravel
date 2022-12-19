@@ -13,7 +13,7 @@ export const useChosenVerseStore = defineStore("chosenVerse",{
     actions: {
       async fetchChosenVerses() {
         try {
-          const req = await axios.get('http://localhost:3000/api/chosenverses')
+          const req = await axios.get('http://localhost:8000/api/chosen_verses')
             this.chosenVerses = req.data
           }
           catch (error) {

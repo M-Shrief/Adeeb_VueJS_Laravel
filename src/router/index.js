@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import Main from '../pages/Main.vue';
 import Poem from '../pages/Poem.vue';
 import Poet from '../pages/Poet.vue';
@@ -41,7 +41,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory('http://localhost:5173'),
+  history: createWebHistory(),
   routes,
 });
 

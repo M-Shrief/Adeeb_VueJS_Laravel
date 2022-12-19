@@ -1,7 +1,6 @@
 <template>
-  <!-- <a :href="href" class="nav-item">{{navTo}}</a> -->
-  <router-link  :to="href" class="nav-item" ><slot /></router-link>
-
+  <!-- add isActive class -->
+  <router-link  :to="href" class="nav-item" active-class="active" ><slot /></router-link>
 </template>
 
 <script setup>
@@ -14,18 +13,19 @@
 </script>
 
 <style lang="scss" scoped>
+  $mainColor: #FBE6C2;
   .nav-item {
     padding: 0.2rem 0.4rem;
     margin: 0.4rem;
-    border: 1px solid #004e64;
-    color: #17BEBB;
+    color: rgba($color: $mainColor, $alpha: 0.8);
     font-size: 1.2rem;
     text-decoration: none;
     &:hover {
-      border: 2px solid #004e64;
+    color: $mainColor;
     }
-    .active {
-      color: #fff;
-    }
+  }
+  .nav-item.active {
+    background-color: $mainColor;
+    color: #2c3e50;
   }
 </style>

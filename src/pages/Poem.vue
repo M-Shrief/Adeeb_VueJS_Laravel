@@ -1,36 +1,73 @@
 <template>
-    <ShowCasePoem :poem="getPoem" 
-      @print=" (print) => {
-        if (!getPrints.includes(print)) {
-          getPrints.push(print)
-        }
-      }"  
-    />
+  <div class="container" dir="rtl">
+    <!-- v-if to remove component onMount error -->
+    <div id="related-data" v-if="getPoem.poet" >
+      <router-link  :to="'/poet/' + getPoem.poet_id" class="link">
+        <ShowCasePoet :details="getPoem.poet" />
+      </router-link>
+      
+      <!--ToDo: add watch function for the route.parameter to reload the state -->
+      <ShowCasePoems :poems="getPoems">
+        <h2>قصائد اخري</h2>
+      </ShowCasePoems>
+    </div>
+    <ShowCasePoem :verses="getPoem.verses" 
+    @print="(print) => addPrint(print)"/>
+  </div>
 </template>
 
 <script setup>
 import {  onBeforeMount, computed } from 'vue';
-import {useRoute } from 'vue-router';
+import {useRoute, useRouter } from 'vue-router';
 import { usePoemStore } from "../stores/poems";
 import { usePrintsStore } from "../stores/prints";
 import ShowCasePoem from "../components/ShowCasePoem.vue";
+import ShowCasePoems from "../components/ShowCasePoems.vue";
+import ShowCasePoet from "../components/ShowCasePoet.vue";
+
+const route = useRoute();
+const router = useRouter();
+
+const poemStore = usePoemStore();
+const getPoem = computed(() => {
+  return poemStore.getPoem
+})
+const getPoems = computed(() => {
+  return poemStore.getPoems
+})
+
+onBeforeMount(() => {
+  poemStore.fetchPoem(route.params.id);
+  // poemStore.fetchOtherPoems(route.params.id);
+})
 
 const printsStore = usePrintsStore();
 const getPrints = computed(() => {
   return printsStore.getPrints
 })
 
-const route = useRoute();
-
-const poemStore = usePoemStore();
-const getPoem = computed(() => {
-  return poemStore.getPoem
-})
-onBeforeMount(() => {
-  poemStore.fetchPoem(route.params.id);
-})
-
+function addPrint(print) {
+  if (!getPrints.value.includes(print)) {
+    return printsStore.addPrint(print)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+
+.container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: 1rem;
+}
+#related-data {
+  .link {
+  text-decoration: none;
+  }
+  h2 {
+    color: #f6b352;
+    text-align: center;
+  }
+}
+
 </style>
