@@ -3,6 +3,7 @@ import Main from '../pages/Main.vue';
 import Poem from '../pages/Poem.vue';
 import Poet from '../pages/Poet.vue';
 import Printing from '../pages/Printing.vue';
+import Orders from '../pages/Orders.vue';
 import About from '../pages/About.vue';
 import Partners from '../pages/Partners.vue';
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/printing',
     name: 'printing',
     component: Printing,
+  },
+  {
+    path: '/orders',
+    name: 'orders',
+    component: Orders,
   },
   {
     path: '/about',

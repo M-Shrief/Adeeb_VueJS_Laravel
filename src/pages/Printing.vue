@@ -5,8 +5,8 @@
         <h3>اختر من الاشعار للطباعة</h3>
         <div id="customization" >
           <div class="text-type">
-            <label for="textType" >اسلوب الخط</label>
-            <select name="textType" id="textType" >
+            <label for="fontType" >اسلوب الخط</label>
+            <select name="fontType" id="fontType" >
               <option value="نسخ">نسخ</option>
               <option value="رقعة">رقعة</option>
               <option value="ديواني">ديواني</option>
@@ -15,23 +15,23 @@
           <PreviewColors :colors="fontColors" @to-color="(color) => fontColor = color" >الخط: </PreviewColors>
           <PreviewColors :colors="backgroundColors" @to-color="(color) => backgroundColor = color ">الخلفية: </PreviewColors>
         </div>
-        <div v-if="preview.qoute" :style="{color: fontColor, background: backgroundColor}" class="qoute">
+        <div v-if="preview.qoute" class="qoute" id="print"
+        :style="{color: fontColor || fontColors[0], background: backgroundColor || backgroundColors[0]}" >
           <p>{{preview.qoute}}</p>
         </div>
-        <div v-else  :style="{color: fontColor, background: backgroundColor}">
-          <div v-if="preview[0]" v-for="print in preview" :key="print._id" class="verse">
-            <p >{{print.first}}</p>
-            <p dir="ltr">{{print.sec}}</p>
-          </div>
-          <div v-else class="verse">
-            <p >{{preview.first}}</p>
-            <p dir="ltr">{{preview.sec}}</p>
-          </div>
+        <div v-else-if="preview[0]" v-for="print in preview" :key="print.id" class="verse" id="print"
+        :style="{color: fontColor || fontColors[0], background: backgroundColor || backgroundColors[0]}">
+          <p >{{print.first}}</p>
+          <p dir="ltr">{{print.sec}}</p>
         </div>
-        <!-- @click="addOrder" -->
-        <button >اضافة الطلب</button>
+        <div v-else class="verse" id="print"
+          :style="{color: fontColor || fontColors[0], background: backgroundColor || backgroundColors[0]}" >
+          <p >{{preview.first}}</p>
+          <p dir="ltr">{{preview.sec}}</p>
+        </div>
+        <button @click="addProduct">اضافة الطلب</button>
       </div>
-      <OrderForm />
+      <OrderForm :products="products" />
     </div>    
 
     <div id="prints" >
@@ -69,10 +69,13 @@ import PreviewColors from "../components/PreviewColors.vue";
 import OrderForm from "../components/OrderForm.vue";
 
 let preview = ref([]);
-let fontColors = ref(['#f6b352', '#f66152','#2c3e50','#42b983','#D5DBB3','#17BEBB','#dc5318','#c80815']);
-let backgroundColors = ref(['url("../assets/images/Temp.png")', '#1f2124','#f6b352', '#f66152', '#d0342b','#2c3e50','#42b983','#D5DBB3','#002626', '#e4d5b7']);
-let fontColor = ref('');
-let backgroundColor = ref('');
+// available colors in stock
+let fontColors = ref(['#fff','#000', '#2c3e50','#c80815','#42b983','#dc5318','silver','#f6b352']);
+let backgroundColors = ref([ '#000','#fff', '#2c3e50','#c80815','#42b983','#dc5318','silver','#f6b352']);
+
+let fontColor = ref();
+let backgroundColor = ref();
+let products = ref([]);
 
 const printsStore = usePrintsStore();
 const getPrints = computed(() => {
@@ -84,6 +87,26 @@ function deletePrint(print) {
   getPrints.value.splice(printIndex, 1);
 }
 
+function addProduct() {
+
+  let productPrint = preview.value;
+  let fontType = document.getElementById("fontType").value;
+  let fontColor = document.getElementById("print").style.color;
+  let backgroundColor = document.getElementById("print").style.background;
+  let product = {
+      print: productPrint,
+      fontType,
+      fontColor,      
+      backgroundColor,
+    };
+  // if(product.print.value ) {
+    // console.log(product.print.value);
+  // }
+  let productIndex = products.value.map(product => product.print).indexOf(productPrint);
+  if (!(productIndex !== -1)) {
+    return products.value.push(product);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -102,12 +125,15 @@ function deletePrint(print) {
   #preview {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 0 auto 1rem;
-    background: url("../assets/images/Temp.png") no-repeat center center/cover;
+    margin: 1rem;
+    border-radius: 1.5rem;
+    background: #1f2124;
+
     .verse, .qoute {
       padding: 0 0.6rem;
       font-size: 1.6rem;
+      width: 70%;
+      margin: 0 auto;
     }
     .qoute {
       text-align: center;
@@ -118,30 +144,29 @@ function deletePrint(print) {
       justify-content: space-around;
       align-items: center;
       padding: 0.3rem;
-      .text-type {
+      .select {
         display: flex;
         flex-direction: column;
         padding:0.5rem;
         select {
           border: none;
         }
+        #fontType {
+          margin-top: 0.3rem;
+        }
       }
     }
     button {
-    margin: 0.5rem auto;
-    border: none;
-    border-radius: 1.5rem;
-    background: #1f2124;
-    color: #f6b352;
-    padding: 0.3rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    &:hover {
-    background: #f6b352;
-    color: #1f2124;
+      margin: 0.5rem auto;
+      border: none;
+      border-radius: 1.5rem;
+      background: #e0f2e9;
+      color: #1f2124;
+      padding: 0.3rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
     }
-  }
   }
   #prints {
     $mainColor: #f6b352;

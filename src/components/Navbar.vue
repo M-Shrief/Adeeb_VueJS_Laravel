@@ -4,6 +4,7 @@
     <router-link to="/" id="logo">أديب</router-link>
     <div>
       <NavItem  :href="'/printing'"  >الطباعة</NavItem>
+      <NavItem  :href="'/orders'"  >الطلبات</NavItem>
       <NavItem  :href="'/about'">قصتنا</NavItem>
       <NavItem  :href="'/partners'" >كن شريكا</NavItem>
     </div>
