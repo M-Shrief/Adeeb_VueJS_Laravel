@@ -13,22 +13,22 @@
   </form>
 
   <div v-for="order in getOrders" :key="order.id" class="order" dir="rtl">
-    <div class="order-details">
+    <section class="order-details">
       <div><p>الاسم</p><span>{{order.name}}</span></div>
       <div><p>الهاتف</p><span>{{order.phone}}</span></div>
       <div><p>العنوان</p><span>{{order.address}}</span></div>
       <div><p>تاريخ الطلب</p><span>{{order.created_at.slice(0,10)}}</span></div>
       <p><span>{{order.reviewed ? 'تمت المراجعة' : 'غير مراجع'}}</span></p>
       <p><span>{{order.completed ? 'تم التسليم' : 'لم يتم التسليم'}}</span></p>
-    </div>
-    <div class="order-products" v-if="order.products">
+    </section>
+    <section class="order-products" v-if="order.products">
       <div v-for="product in order.products" :key="product.print.id" class="product" 
       :style="{color: product.fontColor, background: product.backgroundColor }" >
         <p >{{product.fontType}}</p>
         <p v-if="product.print[0]" > {{product.print[0].first}}...</p>
         <p v-else-if="product.print.qoute">{{product.print.qoute.slice(0,30)}}...</p>
       </div>
-    </div>
+    </section>
   </div>
 </template>
   

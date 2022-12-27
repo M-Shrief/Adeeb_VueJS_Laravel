@@ -1,7 +1,7 @@
 <template> 
   <div id="printing" dir="rtl">
     <div class="container">
-      <div id="preview">
+      <section id="preview">
         <h3>اختر من الاشعار للطباعة</h3>
         <div id="customization" >
           <div class="text-type">
@@ -30,11 +30,11 @@
           <p dir="ltr">{{preview.sec}}</p>
         </div>
         <button @click="addProduct">اضافة الطلب</button>
-      </div>
+      </section>
       <OrderForm :products="products" />
     </div>    
 
-    <div id="prints" >
+    <section id="prints" >
       <h3>المختار للطباعة</h3>
       <!-- ToDo: add a randomButton to get a newRandomVerse -->
         <div v-for="print in getPrints" :key="print.id" class="print-item" >
@@ -57,10 +57,8 @@
           </div>
           <button @click="deletePrint(print)">X</button>
         </div>
-    </div>
+    </section>
   </div>
-    
-
 </template>
 <script setup>
 import { usePrintsStore } from "../stores/prints";
@@ -110,14 +108,29 @@ function addProduct() {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
+
 #printing {
   display: grid;
   grid-template-columns: 75% 25%;
   color: #fff;
   margin-top: 1rem;
+  @include mQ($breakpoint-sm) {
+    grid-template-columns: 65% 35%;
+  }
+  @include mQ($breakpoint-md) {
+    grid-template-columns: 70% 30%;
+  }
+
   h3 {
     text-align: center;
     padding-top: 1rem;
+    @include mQ($breakpoint-sm) {
+    font-size: 1rem;
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 1.1rem;
+    }
   }
   .container {
     min-height: 50vh;
@@ -128,12 +141,17 @@ function addProduct() {
     margin: 1rem;
     border-radius: 1.5rem;
     background: #1f2124;
-
     .verse, .qoute {
       padding: 0 0.6rem;
       font-size: 1.6rem;
       width: 70%;
       margin: 0 auto;
+      @include mQ($breakpoint-sm) {
+        font-size: 0.8rem;
+      }
+      @include mQ($breakpoint-md) {
+        font-size: 0.9rem;
+      }
     }
     .qoute {
       text-align: center;
@@ -155,6 +173,22 @@ function addProduct() {
           margin-top: 0.3rem;
         }
       }
+      @include mQ($breakpoint-sm) {
+        .select {
+          padding: 0.2rem;
+        }
+        label {
+          font-size: 0.8rem;
+        }
+      }
+      @include mQ($breakpoint-md) {
+        .select {
+          padding: 0.3rem;
+        }
+        label {
+          font-size: 0.9rem;
+        }
+      }
     }
     button {
       margin: 0.5rem auto;
@@ -166,6 +200,16 @@ function addProduct() {
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
+      @include mQ($breakpoint-sm) {
+        margin: 0.3rem auto;
+        padding: 0.1rem;
+        font-size: 0.7rem;
+      }
+      @include mQ($breakpoint-md) {
+        margin: 0.5rem auto;
+        padding: 0.3rem;
+        font-size: 0.8rem;
+      }
     }
   }
   #prints {
@@ -175,7 +219,7 @@ function addProduct() {
     background: $secondaryColor;
     color: $mainColor;
     margin-left: 0.5rem;
-    border-radius: 7px;
+    border-radius:  1rem;
     .print-item {
       position: relative;
       border: 1px solid $mainColor;
@@ -183,9 +227,11 @@ function addProduct() {
       border-radius: 5px;
       padding: 0.5rem;
       margin: 0.5rem;
+      .verse, .qoute {
+        font-size: 0.8rem;
+      }
       .qoute {
         text-align: center;
-        padding-top: 1rem;
       }
       button {
         position: absolute;
@@ -199,6 +245,20 @@ function addProduct() {
         cursor: pointer;
         background: $mainColor;
       }
+      @include mQ($breakpoint-sm) {
+        padding: 0.3rem;
+        margin: 0.3rem;
+        button {
+          padding: 0.1rem;
+        }
+      }
+      @include mQ($breakpoint-md) {
+        padding: 0.5rem;
+        margin: 0.5rem;
+        button {
+          padding: 0.15rem;
+        }
+      }      
     }
   }
 }

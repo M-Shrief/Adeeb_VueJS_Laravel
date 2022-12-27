@@ -5,15 +5,15 @@
       <ShowCasePoet :details="getPoet[0]"/>
 
       <ShowCasePoems :poems="getPoet[1]">
-        <h3 class="poems">قصائده</h3>
+        <h3 class="poems-title">قصائده</h3>
       </ShowCasePoems>
     </div>
 
     <!-- Add Pagination for poetry and proses -->
-    <ShowCasePoetry :chosen-verses="getPoet[2]" dir="rtl"
+    <ShowCasePoetry :chosen-verses="getPoet[2]" dir="rtl" :grid="'grid-poet'"
     @print="(print) => addPrint(print)"/>
 
-    <ShowCaseProse  :proses="getPoet[3]" 
+    <ShowCaseProse  :proses="getPoet[3]" :grid="'grid-poet'"
     @print="(print) => addPrint(print)"/>
   </div>
 </template>
@@ -53,32 +53,49 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    display: grid;
-    grid-template-columns: 70% 30%;
-    border-radius: 15px;
-    padding: 0.7rem;
-    margin: 0.7rem 0.3rem;
-    overflow: visible;
-  }
-  .poems {
-    background-color: #f6b352;
-    color: #1f2124;
-    text-align: center;
+@import '../assets/mixins.scss';
+.container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  border-radius: 1rem;
+  padding: 0.7rem;
+  margin: 0.7rem 0.3rem;
+  overflow: visible;
+  @include mQ($breakpoint-sm) {
     padding: 0.3rem;
-    border-radius: 1.5rem;
-    width: 50%;
-    margin: 1rem auto;
+    margin: 0.3rem 0.1erm;
   }
-
-  .grid4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  @include mQ($breakpoint-md) {
+    padding: 0.5rem;
+    margin: 0.5rem 0.2rem;
   }
-  // .not-available {
-  //   text-align: center;
-  //   color: #f6b352;
-  //   background-color: #1f2124;
-  // }
-  
+  @include mQ($breakpoint-lg) {
+    padding: 0.6rem;
+    margin: 0.6rem 0.3rem;
+  }
+}
+.poems-title {
+  background-color: #f6b352;
+  color: #1f2124;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 1.5rem;
+  width: 50%;
+  margin: 1rem auto;
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.3rem auto;
+    font-size: 1rem;
+  }
+  @include mQ($breakpoint-md) {
+    padding: 0.2rem;
+    margin: 0.5rem auto;
+    font-size: 1rem;
+  }
+  @include mQ($breakpoint-lg) {
+    padding: 0.3rem;
+    margin: 0.7rem auto;
+    font-size: 1rem;
+  }
+}
 </style>

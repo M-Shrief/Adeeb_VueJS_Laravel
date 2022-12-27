@@ -1,7 +1,7 @@
 <template>
   <div class="container" dir="rtl">
     <!-- v-if to remove component onMount error -->
-    <div id="related-data" v-if="getPoem.poet" >
+    <section id="related-data" v-if="getPoem.poet" >
       <router-link  :to="'/poet/' + getPoem.poet_id" class="link">
         <ShowCasePoet :details="getPoem.poet" />
       </router-link>
@@ -10,7 +10,7 @@
       <ShowCasePoems :poems="getPoems">
         <h2>قصائد اخري</h2>
       </ShowCasePoems>
-    </div>
+    </section>
     <ShowCasePoem :verses="getPoem.verses" 
     @print="(print) => addPrint(print)"/>
   </div>
@@ -61,6 +61,7 @@ function addPrint(print) {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
 
 .container {
   display: grid;
@@ -74,6 +75,15 @@ function addPrint(print) {
   h2 {
     color: #f6b352;
     text-align: center;
+    @include mQ($breakpoint-sm) {
+      font-size: 1rem;
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 1rem;
+    }
+    @include mQ($breakpoint-lg) {
+      font-size: 1.1rem;
+    }
   }
 }
 

@@ -14,18 +14,42 @@
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
+
 .colors {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  p {
+    @include mQ($breakpoint-sm) {
+      font-size: 0.8rem;
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 0.9rem;
+    }
+  }
   .color {
   padding: 0.5rem;
   margin: 0.3rem;
   border: 1px solid #fff;
-  border-radius: 10px;
+  border-radius: 1rem;
     &:hover {
       padding: 0.6rem;
+    }
+    @include mQ($breakpoint-sm) {
+      padding: 0.3rem;
+      margin: 0.1rem;
+      &:hover {
+        padding: 0.4rem;
+      }
+    }
+    @include mQ($breakpoint-md) {
+      padding: 0.4rem;
+      margin: 0.2rem;
+      &:hover  {
+        padding: 0.5rem;
+      }
     }
   }
 }

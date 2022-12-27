@@ -15,6 +15,8 @@
   import NavItem from './NavItem.vue'
 </script>
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
+
 #nav-raw {
   display: flex;
   flex-direction: row;
@@ -30,6 +32,11 @@
     margin: 0.4rem;
     &:hover {
       color: #f6b352;
+    }
+    @include mQ($breakpoint-sm) {
+      font-size: 1rem;
+      padding: 0.1rem 0.2rem;
+      margin: 0.1rem;
     }
   }
 }

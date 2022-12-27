@@ -1,12 +1,12 @@
 <template> 
-  <div id="partners">
+  <section id="partners">
     <h1>Partners</h1>
     <span>Still looking for ones...</span>
     <p class="reach">Reach me if you want to..</p>
     <div class="note">
       <p>but you're so slow that I see you infront of me?!</p>
     </div>
-  </div>
+  </section>
   
 </template>
 

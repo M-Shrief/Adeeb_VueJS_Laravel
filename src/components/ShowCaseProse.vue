@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <section id="proses">
     <h2 class="title" >مختارات نثرية</h2>
     <!-- <h2 class="title" v-if="proses.length < 1">لا تتوفر مختارات نثرية حتي الان</h2> -->
-    <div :class="route.name == 'poet' ? 'grid2' : ''">
+    <div :class="grid">
       <div v-for="prose in proses" :key="prose.id" class="prose-item">
         <p class="qoute">{{prose.qoute}}</p>
         <div class="justify">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup> 
@@ -22,40 +22,81 @@ defineProps({
   proses: {
     type: Array,
     required: true
+  },
+  grid: {
+    type: String,
+    required: false,
   }
 })
 const emit = defineEmits(['print']);
 </script>
 
 <style lang="scss" scoped>
-  $mainColor: #f6b352;
-  $secondaryColor: #1f2124;
+@import '../assets/mixins.scss';
 
-  .title {
-    text-align: center;
-    background-color: $secondaryColor;
-    color: $mainColor;
-    padding: 0.3rem;
-    margin: 1rem 0.3rem 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-    border-radius: 15px;
+$mainColor: #f6b352;
+$secondaryColor: #1f2124;
+
+.title {
+  text-align: center;
+  background-color: $secondaryColor;
+  color: $mainColor;
+  padding: 0.3rem;
+  margin: 1rem 0.3rem 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 1.5rem;
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.3rem 0.1rem 0;
+    font-size: 1rem;
   }
-.grid2 {
+  @include mQ($breakpoint-md) {
+    padding: 0.2rem;
+    margin: 0.5rem 0.3rem 0;
+    font-size: 1.2rem;
+  }
+  @include mQ($breakpoint-lg) {
+    padding: 0.3rem;
+    margin: 0.6rem 0.4rem 0;
+    font-size: 1.3rem;
+  }
+}
+.grid-poet {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @include mQ($breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .prose-item {
   position: relative;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   padding: 0.3rem;
   margin: 0.3rem;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   background: $secondaryColor;
   color: $mainColor;
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.1rem;
+  }
+  @include mQ($breakpoint-md) {
+    padding: 0.2rem;
+    margin: 0.2rem;
+  }
   .qoute {
     text-align: center;
     font-size: 1.2rem;
     padding-bottom: 0.8rem;
+    @include mQ($breakpoint-sm) {
+      font-size: 0.8rem;
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 1rem;
+    }
+    @include mQ($breakpoint-lg) {
+      font-size: 1.1rem;
+    }
   }
   .details {
     text-decoration: none;
@@ -66,22 +107,18 @@ const emit = defineEmits(['print']);
     &:hover {
       font-weight: 600;
     }
+    @include mQ($breakpoint-sm) {
+      font-size: 0.6rem;
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 0.7rem;    
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 0.7rem;    
+    }
   }
   .print-button {
-    background: $secondaryColor;
-    border: 1px solid $mainColor;
-    position: absolute;
-    bottom: 0.7rem;
-    left: 0.7rem;
-    border-radius: 6px;
-    color: $mainColor;
-    padding: 0.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    &:hover {
-      background: $mainColor;
-      color: $secondaryColor;
-    }
+    @include print-button;
   }
 }
 </style>

@@ -24,6 +24,8 @@ const getPrints = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
+
 $mainColor: #FBE6C2;
 $secondaryColor: #2c3e50;
   #selected-prints{
@@ -35,6 +37,15 @@ $secondaryColor: #2c3e50;
     background: $secondaryColor;
     padding: 0.3rem 0.7rem;
     border-radius: 2rem;
+    @include mQ($breakpoint-sm) {
+      padding: 0.1rem 0.3rem;
+    }
+    @include mQ($breakpoint-md) {
+      padding: 0.2rem 0.4rem;
+    }
+    @include mQ($breakpoint-lg) {
+      padding: 0.2rem 0.5rem;
+    }
     .title {
       margin-left: 0.3rem;
       font-weight: 600;
@@ -42,6 +53,18 @@ $secondaryColor: #2c3e50;
       text-decoration: none;
       &:hover {
         color: $mainColor;
+      }
+      @include mQ($breakpoint-sm) {
+        margin-left: 0.1rem;
+        font-size: 0.8rem;
+      }
+      @include mQ($breakpoint-md) {
+        margin-left: 0.2rem;
+        font-size: 0.9rem;
+      }
+      @include mQ($breakpoint-lg) {
+        margin-left: 0.3rem;
+        font-size: 1rem;
       }
     }
     .prints {
@@ -62,6 +85,12 @@ $secondaryColor: #2c3e50;
             display: inline;
             padding: 0rem;
             font-weight: 600;
+          }
+        }
+        @include mQ($breakpoint-sm) {
+          padding: 0.1rem;
+          &:hover .prints-item-p {
+            font-size: 0.8rem;
           }
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div id="poets" >
+  <section id="poets" >
     <!--
       Add a link to Poets page that shows all poems with pagination 
       opposite colors for the slot
@@ -11,7 +11,7 @@
         <p >{{poet.name}}</p>
       </router-link>
     </div>
-  </div>
+  </section>
 
 </template>
 
@@ -29,6 +29,8 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/mixins.scss';
+
 $mainColor: #2c3e50;
 $secondaryColor: #FBE6C2;
   
@@ -47,9 +49,49 @@ $secondaryColor: #FBE6C2;
       font-weight: 700;
     }
   }
-  .grid3 {
+  .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include mQ($breakpoint-sm) {
+  #poets {
+    padding: 0.1rem;
+    margin: 0 0.3rem;
+    .poet {
+      font-size: 0.8rem;
+      margin: 0.1rem;
+    }
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@include mQ($breakpoint-md) {
+  #poets {
+    padding: 0.2rem;
+    margin: 0 0.5rem;
+    .poet {
+      font-size: 0.9rem;
+      margin: 0.2rem;
+    }
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@include mQ($breakpoint-lg) {
+  #poets {
+    padding: 0.3rem;
+    margin: 0 0.6rem;
+    .poet {
+      font-size: 1rem;
+      margin: 0.3rem;
+    }
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 </style>
