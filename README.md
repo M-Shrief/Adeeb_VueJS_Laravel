@@ -4,8 +4,7 @@ Connecting with a Laravel API leveraging axios requests.
 
 ## Aims and Goals
 
-The Projct assumes to be a part of a business model that it's goal to show Arabic litereture,
-consisting of Poetry and Prose. 
+The Projct is assumed to be a part of a business model that it's goal to show Arabic litereture, consisting of Poetry and Prose. and make it possible to print it with specific colors and font.
 
 ## Structure
 
