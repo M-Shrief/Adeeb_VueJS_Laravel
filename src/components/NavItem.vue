@@ -1,5 +1,4 @@
 <template>
-  <!-- add isActive class -->
   <router-link  :to="href" class="nav-item" active-class="active" ><slot /></router-link>
 </template>
 

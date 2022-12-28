@@ -1,9 +1,5 @@
 <template>
   <section id="poets" >
-    <!--
-      Add a link to Poets page that shows all poems with pagination 
-      opposite colors for the slot
-    -->
     <slot />
     <div :class="grid">
       <router-link v-for="poet in poets" :key="poet.id"

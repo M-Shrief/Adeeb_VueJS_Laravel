@@ -1,7 +1,6 @@
 <template>
   <section id="proses">
     <h2 class="title" >مختارات نثرية</h2>
-    <!-- <h2 class="title" v-if="proses.length < 1">لا تتوفر مختارات نثرية حتي الان</h2> -->
     <div :class="grid">
       <div v-for="prose in proses" :key="prose.id" class="prose-item">
         <p class="qoute">{{prose.qoute}}</p>
