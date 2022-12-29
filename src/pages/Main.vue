@@ -1,6 +1,6 @@
 <template>
   <main dir="rtl">
-    <h1 >آديب</h1>
+    <h1 >أديب</h1>
     <p >لطباعة الادب العربي شعراً ونثراً</p>
     <div  dir="rtl" class="container"> 
       <!-- Add Pagination -->

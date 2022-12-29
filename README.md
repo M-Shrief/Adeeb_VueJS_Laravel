@@ -1,4 +1,4 @@
-# "Adeeb آديب" VueJS with Laravel API
+# "Adeeb أديب" VueJS with Laravel API
 A Sample project for "Adeeb آديب" using VueJS, Pinia and vue-router. 
 Connecting with a Laravel API leveraging axios requests.
 
