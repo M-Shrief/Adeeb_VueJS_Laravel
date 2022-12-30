@@ -32,17 +32,17 @@ $secondaryColor: #FBE6C2;
   padding: 0.7rem;
   margin: 0 0.7rem;
   overflow: visible;
-  @include mQ($breakpoint-sm) {
-    padding: 0.3rem;
-    margin: 0 0.3rem;
+  @include mQ($breakpoint-lg) {
+    padding: 0.6rem;
+    margin: 0 0.6rem;
   }
   @include mQ($breakpoint-md) {
     padding: 0.5rem;
     margin: 0 0.5rem;
   }
-  @include mQ($breakpoint-lg) {
-    padding: 0.6rem;
-    margin: 0 0.6rem;
+  @include mQ($breakpoint-sm) {
+    padding: 0.3rem;
+    margin: 0 0.3rem;
   }
   .verse {
     font-size: 1.2rem;
@@ -59,14 +59,14 @@ $secondaryColor: #FBE6C2;
     &:hover {
       font-weight: 600;
     }
-    @include mQ($breakpoint-sm) {
-      font-size: 1rem;
+    @include mQ($breakpoint-lg) {
+      font-size: 1.25rem;
     }
     @include mQ($breakpoint-md) {
       font-size: 1.2rem;
     }
-    @include mQ($breakpoint-lg) {
-      font-size: 1.25rem;
+    @include mQ($breakpoint-sm) {
+      font-size: 1rem;
     }
   }
 }

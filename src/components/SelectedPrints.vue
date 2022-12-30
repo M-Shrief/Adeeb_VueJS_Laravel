@@ -37,14 +37,14 @@ $secondaryColor: #2c3e50;
     background: $secondaryColor;
     padding: 0.3rem 0.7rem;
     border-radius: 2rem;
-    @include mQ($breakpoint-sm) {
-      padding: 0.1rem 0.3rem;
+    @include mQ($breakpoint-lg) {
+      padding: 0.2rem 0.5rem;
     }
     @include mQ($breakpoint-md) {
       padding: 0.2rem 0.4rem;
     }
-    @include mQ($breakpoint-lg) {
-      padding: 0.2rem 0.5rem;
+    @include mQ($breakpoint-sm) {
+      padding: 0.1rem 0.3rem;
     }
     .title {
       margin-left: 0.3rem;
@@ -54,17 +54,17 @@ $secondaryColor: #2c3e50;
       &:hover {
         color: $mainColor;
       }
-      @include mQ($breakpoint-sm) {
-        margin-left: 0.1rem;
-        font-size: 0.8rem;
+      @include mQ($breakpoint-lg) {
+        margin-left: 0.3rem;
+        font-size: 1rem;
       }
       @include mQ($breakpoint-md) {
         margin-left: 0.2rem;
         font-size: 0.9rem;
       }
-      @include mQ($breakpoint-lg) {
-        margin-left: 0.3rem;
-        font-size: 1rem;
+      @include mQ($breakpoint-sm) {
+        margin-left: 0.1rem;
+        font-size: 0.8rem;
       }
     }
     .prints {

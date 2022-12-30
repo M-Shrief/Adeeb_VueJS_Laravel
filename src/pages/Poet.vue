@@ -61,17 +61,18 @@ onMounted(() => {
   padding: 0.7rem;
   margin: 0.7rem 0.3rem;
   overflow: visible;
-  @include mQ($breakpoint-sm) {
-    padding: 0.3rem;
-    margin: 0.3rem 0.1erm;
+  
+  @include mQ($breakpoint-lg) {
+    padding: 0.6rem;
+    margin: 0.6rem 0.3rem;
   }
   @include mQ($breakpoint-md) {
     padding: 0.5rem;
     margin: 0.5rem 0.2rem;
   }
-  @include mQ($breakpoint-lg) {
-    padding: 0.6rem;
-    margin: 0.6rem 0.3rem;
+  @include mQ($breakpoint-sm) {
+    padding: 0.3rem;
+    margin: 0.3rem 0.1erm;
   }
 }
 .poems-title {
@@ -82,9 +83,9 @@ onMounted(() => {
   border-radius: 1.5rem;
   width: 50%;
   margin: 1rem auto;
-  @include mQ($breakpoint-sm) {
-    padding: 0.1rem;
-    margin: 0.3rem auto;
+  @include mQ($breakpoint-lg) {
+    padding: 0.3rem;
+    margin: 0.7rem auto;
     font-size: 1rem;
   }
   @include mQ($breakpoint-md) {
@@ -92,9 +93,9 @@ onMounted(() => {
     margin: 0.5rem auto;
     font-size: 1rem;
   }
-  @include mQ($breakpoint-lg) {
-    padding: 0.3rem;
-    margin: 0.7rem auto;
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.3rem auto;
     font-size: 1rem;
   }
 }

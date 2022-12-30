@@ -75,16 +75,15 @@ function addPrint(print) {
   h2 {
     color: #f6b352;
     text-align: center;
-    @include mQ($breakpoint-sm) {
-      font-size: 1rem;
+    @include mQ($breakpoint-lg) {
+      font-size: 1.1rem;
     }
     @include mQ($breakpoint-md) {
       font-size: 1rem;
     }
-    @include mQ($breakpoint-lg) {
-      font-size: 1.1rem;
+    @include mQ($breakpoint-sm) {
+      font-size: 1rem;
     }
   }
 }
-
 </style>

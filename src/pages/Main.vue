@@ -108,21 +108,20 @@ p  {
   background-color: #2c3e50;
   color: #FBE6C2;
 }
-
-@include mQ($breakpoint-sm) {
+@include mQ($breakpoint-lg) {
   h1 {
-    font-size: 1.6rem;
+    font-size: 2.5rem;
   }
   p {
-    font-size: 1rem
+    font-size: 1.5rem;
   }
   .container {
     grid-template-columns: 65% 35%;
   }
-  .poems-title, .poets-title {
-    padding: 0.1rem;
-    margin: 0.3rem auto;
-    font-size: 1rem;
+  .poems-title, .poets-title{
+    padding: 0.3rem;
+    margin: 0.6rem auto;
+    font-size: 1.3rem;
   }
 }
 @include mQ($breakpoint-md) {
@@ -141,20 +140,20 @@ p  {
     font-size: 1.2rem;
   }
 }
-@include mQ($breakpoint-lg) {
+@include mQ($breakpoint-sm) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 1rem
   }
   .container {
     grid-template-columns: 65% 35%;
   }
-  .poems-title, .poets-title{
-    padding: 0.3rem;
-    margin: 0.6rem auto;
-    font-size: 1.3rem;
+  .poems-title, .poets-title {
+    padding: 0.1rem;
+    margin: 0.3rem auto;
+    font-size: 1rem;
   }
 }
 </style>

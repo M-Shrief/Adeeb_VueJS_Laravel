@@ -44,20 +44,20 @@ $secondaryColor: #1f2124;
   margin: 1rem 0.3rem 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   border-radius: 1.5rem;
-  @include mQ($breakpoint-sm) {
-    padding: 0.1rem;
-    margin: 0.3rem 0.1rem 0;
-    font-size: 1rem;
+  @include mQ($breakpoint-lg) {
+    padding: 0.3rem;
+    margin: 0.6rem 0.4rem 0;
+    font-size: 1.3rem;
   }
   @include mQ($breakpoint-md) {
     padding: 0.2rem;
     margin: 0.5rem 0.3rem 0;
     font-size: 1.2rem;
   }
-  @include mQ($breakpoint-lg) {
-    padding: 0.3rem;
-    margin: 0.6rem 0.4rem 0;
-    font-size: 1.3rem;
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.3rem 0.1rem 0;
+    font-size: 1rem;
   }
 }
 .grid-poet {
@@ -75,26 +75,26 @@ $secondaryColor: #1f2124;
   border-radius: 1.5rem;
   background: $secondaryColor;
   color: $mainColor;
-  @include mQ($breakpoint-sm) {
-    padding: 0.1rem;
-    margin: 0.1rem;
-  }
   @include mQ($breakpoint-md) {
     padding: 0.2rem;
     margin: 0.2rem;
+  }
+  @include mQ($breakpoint-sm) {
+    padding: 0.1rem;
+    margin: 0.1rem;
   }
   .qoute {
     text-align: center;
     font-size: 1.2rem;
     padding-bottom: 0.8rem;
-    @include mQ($breakpoint-sm) {
-      font-size: 0.8rem;
+    @include mQ($breakpoint-lg) {
+      font-size: 1.1rem;
     }
     @include mQ($breakpoint-md) {
       font-size: 1rem;
     }
-    @include mQ($breakpoint-lg) {
-      font-size: 1.1rem;
+    @include mQ($breakpoint-sm) {
+      font-size: 0.8rem;
     }
   }
   .details {
@@ -106,14 +106,14 @@ $secondaryColor: #1f2124;
     &:hover {
       font-weight: 600;
     }
+    @include mQ($breakpoint-lg) {
+      font-size: 0.7rem;    
+    }
+    @include mQ($breakpoint-md) {
+      font-size: 0.7rem;    
+    }
     @include mQ($breakpoint-sm) {
       font-size: 0.6rem;
-    }
-    @include mQ($breakpoint-md) {
-      font-size: 0.7rem;    
-    }
-    @include mQ($breakpoint-md) {
-      font-size: 0.7rem;    
     }
   }
   .print-button {

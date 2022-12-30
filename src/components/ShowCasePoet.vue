@@ -33,14 +33,14 @@ $secondaryColor: #FBE6C2;
   .bio {
     font-size: 1.2rem;
   }
-  @include mQ($breakpoint-sm) {
-    padding: 0.3rem;
-    margin: 0.3rem 0.1rem;
+  @include mQ($breakpoint-lg) {
+    padding: 0.5rem;
+    margin: 0.5rem 0.2rem;
     h2 {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
     .bio {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
   }
   @include mQ($breakpoint-md) {
@@ -53,14 +53,14 @@ $secondaryColor: #FBE6C2;
       font-size: 0.9rem;
     }
   }
-  @include mQ($breakpoint-lg) {
-    padding: 0.5rem;
-    margin: 0.5rem 0.2rem;
+  @include mQ($breakpoint-sm) {
+    padding: 0.3rem;
+    margin: 0.3rem 0.1rem;
     h2 {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     .bio {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 }

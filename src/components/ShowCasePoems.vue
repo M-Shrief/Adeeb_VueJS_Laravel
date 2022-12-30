@@ -52,15 +52,15 @@ $secondaryColor: #1f2124;
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@include mQ($breakpoint-sm) {
+@include mQ($breakpoint-lg) {
   #poems {
-    padding: 0.2rem;
-    margin: 0 0.4rem;
+    padding: 0.4rem;
+    margin: 0 0.7rem;
     .poem {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
     .grid {
-    grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
@@ -76,15 +76,15 @@ $secondaryColor: #1f2124;
     }
   }
 }
-@include mQ($breakpoint-lg) {
+@include mQ($breakpoint-sm) {
   #poems {
-    padding: 0.4rem;
-    margin: 0 0.7rem;
+    padding: 0.2rem;
+    margin: 0 0.4rem;
     .poem {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     .grid {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     }
   }
 }

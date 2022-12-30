@@ -51,13 +51,13 @@ $secondaryColor: #FBE6C2;
   }
 }
 
-@include mQ($breakpoint-sm) {
+@include mQ($breakpoint-lg) {
   #poets {
-    padding: 0.1rem;
-    margin: 0 0.3rem;
+    padding: 0.3rem;
+    margin: 0 0.6rem;
     .poet {
-      font-size: 0.8rem;
-      margin: 0.1rem;
+      font-size: 1rem;
+      margin: 0.3rem;
     }
     .grid {
       grid-template-columns: repeat(2, 1fr);
@@ -77,13 +77,13 @@ $secondaryColor: #FBE6C2;
     }
   }
 }
-@include mQ($breakpoint-lg) {
+@include mQ($breakpoint-sm) {
   #poets {
-    padding: 0.3rem;
-    margin: 0 0.6rem;
+    padding: 0.1rem;
+    margin: 0 0.3rem;
     .poet {
-      font-size: 1rem;
-      margin: 0.3rem;
+      font-size: 0.8rem;
+      margin: 0.1rem;
     }
     .grid {
       grid-template-columns: repeat(2, 1fr);

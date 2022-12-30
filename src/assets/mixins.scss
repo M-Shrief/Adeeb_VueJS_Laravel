@@ -30,13 +30,13 @@ $breakpoint-xl: 1280px; // default development size
     background: $mainColor;
     color: $secondaryColor;
   }
-  @include mQ($breakpoint-sm) {
-    font-size: 0.5rem;
+  @include mQ($breakpoint-lg) {
+    font-size: 0.6rem;
   }
   @include mQ($breakpoint-md) {
     font-size: 0.6rem;
   }
-  @include mQ($breakpoint-lg) {
-    font-size: 0.6rem;
+  @include mQ($breakpoint-sm) {
+    font-size: 0.5rem;
   }
 }
