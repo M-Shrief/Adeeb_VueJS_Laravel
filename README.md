@@ -1,6 +1,6 @@
 # "Adeeb أديب" VueJS with Laravel API
-A Sample project for "Adeeb آديب" using VueJS, Pinia and vue-router. 
-Connecting with a Laravel API leveraging axios requests.
+A Sample project for "Adeeb آديب" using VueJS, Pinia and vue-router, connecting with a Node/Express API leveraging axios requests.
+While I'm using cypress for component testing.
 
 ## Aims and Goals
 
