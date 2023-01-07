@@ -3,17 +3,14 @@
   <nav id="nav-raw" dir="rtl">
     <router-link to="/" id="logo">آديب</router-link>
     <div>
-      <NavItem  :href="'/printing'"  >الطباعة</NavItem>
-      <NavItem  :href="'/orders'"  >الطلبات</NavItem>
-      <NavItem  :href="'/about'">قصتنا</NavItem>
-      <NavItem  :href="'/partners'" >كن شريكا</NavItem>
+      <router-link  :to="'/printing'" class="nav-item" active-class="active" >الطباعة</router-link>
+      <router-link  :to="'/orders'" class="nav-item" active-class="active" >الطلبات</router-link>
+      <router-link  :to="'/about'" class="nav-item" active-class="active">قصتنا</router-link>
+      <router-link  :to="'/partners'" class="nav-item" active-class="active">كن شريكا</router-link>
     </div>
   </nav>
 </template>
 
-<script setup>
-  import NavItem from './NavItem.vue'
-</script>
 <style lang="scss" scoped>
 @import '../assets/mixins.scss';
 
@@ -38,6 +35,27 @@
       padding: 0.1rem 0.2rem;
       margin: 0.1rem;
     }
+  }
+  $mainColor: #FBE6C2;
+  .nav-item {
+    //////////////// 
+    padding: 0.2rem 0.4rem;
+    margin: 0.4rem;
+    color: rgba($color: $mainColor, $alpha: 0.8);
+    font-size: 1.2rem;
+    text-decoration: none;
+    &:hover {
+    color: $mainColor;
+    }
+    @include mQ($breakpoint-sm) {
+      font-size: 0.8rem;
+      padding: 0.1rem 0.2rem;
+      margin: 0.1rem;
+    }
+  }
+  .nav-item.active {
+    background-color: $mainColor;
+    color: #2c3e50;
   }
 }
 </style>
