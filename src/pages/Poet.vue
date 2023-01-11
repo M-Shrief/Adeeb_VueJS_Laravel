@@ -31,14 +31,8 @@ import ShowCasePoetry from '../components/ShowCasePoetry.vue';
 import ShowCaseProse from '../components/ShowCaseProse.vue';
 
 const printsStore = usePrintsStore();
-const getPrints = computed(() => {
-  return printsStore.getPrints
-})
-
 function addPrint(print) {
-  if (!getPrints.value.includes(print)) {
-    return printsStore.addPrint(print)
-  }
+  return printsStore.addPrint(print)
 }
 
 const poetStore = usePoetStore();

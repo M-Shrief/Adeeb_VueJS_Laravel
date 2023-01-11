@@ -11,10 +11,13 @@ export const usePrintsStore = defineStore("print", {
   },
   actions: {
     addPrint(print)  {
-      this.prints.push(print);
+      if (!this.getPrints.includes(print)) {
+        this.prints.push(print);
+      }
     },
     removePrint(print)  {
-      this.prints.pop(print);
+      let printIndex = this.getPrints.map(verse => verse.id).indexOf(print.id);
+      this.getPrints.splice(printIndex, 1);
     }
   }
 })

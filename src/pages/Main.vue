@@ -65,14 +65,10 @@ onMounted(() => {
 })
 
 const printsStore = usePrintsStore();
-const getPrints = computed(() => {
-  return printsStore.getPrints
-})
 function addPrint(print) {
-  if (!getPrints.value.includes(print)) {
-    return printsStore.addPrint(print)
-  }
+  return printsStore.addPrint(print)
 }
+
 </script>
 
 <style lang="scss" scoped>
