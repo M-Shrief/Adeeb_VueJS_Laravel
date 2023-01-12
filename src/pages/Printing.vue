@@ -36,6 +36,27 @@
 
     <section id="prints" >
       <h3>المختار للطباعة</h3>
+      <div id="randoms" >
+        <div id="buttons">
+          <button @click="getRandomPoetry(1)">شعر عشوائي</button>
+          <button @click="getRandomProse(1)">نثر عشوائي</button>
+        </div>
+        <div v-if="randomAdeeb">
+          <div @click="preview = randomAdeeb.verse || randomAdeeb ">
+            <div  v-if="randomAdeeb.verse"  v-for="verse in randomAdeeb.verse" :key="verse._id" class="verse"  >
+              <p >{{verse.first}}</p>
+              <p  dir="ltr" >{{verse.sec}}</p>
+            </div>
+            <div v-else-if="randomAdeeb.first"  class="verse" >
+              <p >{{randomAdeeb.first}}</p>
+              <p  dir="ltr" >{{randomAdeeb.sec}}</p>
+            </div>
+            <div v-else-if="randomAdeeb.qoute"  class="qoute" >
+              <p >{{randomAdeeb.qoute}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- ToDo: add a randomButton to get a newRandomVerse -->
         <div v-for="print in getPrints" :key="print.id" class="print-item" >
           <!-- Assigning poetry(2verses) || poetry(1verse) or prose -->
@@ -61,12 +82,17 @@
   </div>
 </template>
 <script setup>
-import { usePrintsStore } from "../stores/prints";
 import {  computed, ref } from 'vue';
+// Stores
+import { usePrintsStore } from "../stores/prints";
+import { useChosenVerseStore } from "../stores/chosenVerses";
+import { useProseStore } from "../stores/proses";
+// Components
 import PreviewColors from "../components/PreviewColors.vue";
 import OrderForm from "../components/OrderForm.vue";
 
 let preview = ref([]);
+let randomAdeeb = ref();
 // available colors in stock
 let fontColors = ref(['#fff','#000', '#2c3e50','#c80815','#42b983','#dc5318','silver','#f6b352']);
 let backgroundColors = ref([ '#000','#fff', '#2c3e50','#c80815','#42b983','#dc5318','silver','#f6b352']);
@@ -103,6 +129,18 @@ function addProduct() {
   if (!(productIndex !== -1)) {
     return products.value.push(product);
   }
+}
+// bug: it doesn't assign for the first run
+const chosenVerseStore = useChosenVerseStore();
+function getRandomPoetry(num) {
+  chosenVerseStore.fetchRandomChosenVerses(num);
+  randomAdeeb.value = chosenVerseStore.getChosenVerses[0];
+}
+
+const proseStore = useProseStore();
+function getRandomProse(num) {
+  proseStore.fetchRandomProses(num);
+  randomAdeeb.value = proseStore.getProses[0];
 }
 </script>
 
@@ -216,6 +254,21 @@ function addProduct() {
     color: $mainColor;
     margin-left: 0.5rem;
     border-radius:  1rem;
+    button {
+      color: $secondaryColor;
+      padding: 0.4rem;
+      background: none;
+      border: none;
+      border-radius: 0.7rem;
+      cursor: pointer;
+      background: $mainColor;
+      @include mQ($breakpoint-md) {
+        padding: 0.15rem;
+      }
+      @include mQ($breakpoint-sm) {
+        padding: 0.1rem;
+      }
+    }
     .print-item {
       position: relative;
       border: 1px solid $mainColor;
@@ -227,33 +280,41 @@ function addProduct() {
         font-size: 0.8rem;
       }
       .qoute {
+        padding-top: 1rem;
         text-align: center;
       }
       button {
-        position: absolute;
-        color: $secondaryColor;
-        padding: 0.4rem;
-        left: 0.2rem;
-        top: 0.2rem;
-        background: none;
-        border: none;
-        border-radius: 0.7rem;
-        cursor: pointer;
-        background: $mainColor;
+      position: absolute;
+      left: 0.2rem;
+      top: 0.2rem; 
       }
       @include mQ($breakpoint-md) {
         padding: 0.5rem;
         margin: 0.5rem;
-        button {
-          padding: 0.15rem;
+        .qoute {
+          padding-top: 0.5rem;
         }
       }      
       @include mQ($breakpoint-sm) {
         padding: 0.3rem;
         margin: 0.3rem;
-        button {
-          padding: 0.1rem;
+        .qoute {
+          padding-top: 0.3rem;
         }
+      }
+    }
+    #randoms {
+      border: 1px solid $mainColor;
+      list-style: none;
+      border-radius: 5px;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      .qoute {
+        text-align: center;
+      }
+      #buttons {
+        display: flex;
+        justify-content: space-around;
       }
     }
   }

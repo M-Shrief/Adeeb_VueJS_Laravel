@@ -20,6 +20,16 @@ export const useChosenVerseStore = defineStore("chosenVerse",{
             alert(error)
             console.log(error)
         }
+      },
+      async fetchRandomChosenVerses(num) {
+        try {
+          const req = await axios.get(`http://localhost:8000/api/chosen_verses/random/${num}`)
+          this.chosenVerses = req.data
+        }
+        catch (error) {
+          alert(error)
+          console.log(error)
+        }
       }
     },
 })
