@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Main from '../pages/Main.vue';
-import Poem from '../pages/Poem.vue';
-import Poet from '../pages/Poet.vue';
-import Printing from '../pages/Printing.vue';
-import Orders from '../pages/Orders.vue';
-import About from '../pages/About.vue';
-import Partners from '../pages/Partners.vue';
-
+const Main = () => import('../pages/Main.vue')
+const Poem = () => import('../pages/Poem.vue')
+const Poet = () => import('../pages/Poet.vue')
+const Printing = () => import('../pages/Printing.vue')
+const Orders = () => import('../pages/Orders.vue')
+const About = () => import('../pages/About.vue')
+const Partners = () => import('../pages/Partners.vue')
 
 const routes = [
   {
@@ -49,6 +48,9 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
 });
 
 export default router
