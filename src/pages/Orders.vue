@@ -72,6 +72,18 @@ form {
       border-radius: 8px;
     }
   }
+  button[type='submit'] {
+    position: relative;
+    right: 45%;
+    margin: 0.5rem auto;
+    border-radius: 1.5rem;
+    background: $mainColor;
+    color: $secondaryColor;
+    border: none;
+    padding: 0.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
 }
 .order {
   color: $mainColor;

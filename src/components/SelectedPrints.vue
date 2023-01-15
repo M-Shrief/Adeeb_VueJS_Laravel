@@ -2,7 +2,7 @@
   <div id="selected-prints">
     <p><router-link  to="/printing" class="title" >للطباعة</router-link> </p>
       <ul class="prints" >
-        <li class="prints-item" v-for="print in getPrints" :key="print.id">
+        <li class="prints-item" v-for="print in getPrints" :key="print.id" @dblclick="removePrint(print)">
           <!-- poetry -->
           <p class="prints-item-p" v-if="print.verse" >{{print.verse[0].first}}..</p> 
           <p class="prints-item-p" v-else-if="print.first" >{{print.first}}..</p> 
@@ -21,6 +21,9 @@ const printsStore = usePrintsStore();
 const getPrints = computed(() => {
   return printsStore.getPrints
 })
+function removePrint(print) {
+  return printsStore.removePrint(print);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -76,6 +79,7 @@ $secondaryColor: #2c3e50;
         margin-left: 0.3rem;
         background: rgba($color: $mainColor, $alpha: .8);
         color: $secondaryColor;
+        cursor: pointer;
         .prints-item-p {
           display: none;
           padding: 0.25rem;

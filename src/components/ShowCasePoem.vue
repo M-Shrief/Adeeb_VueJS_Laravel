@@ -50,6 +50,7 @@ $secondaryColor: #FBE6C2;
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
     .first {
       margin-right: 0.4rem;
     }
