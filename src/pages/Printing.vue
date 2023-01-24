@@ -57,27 +57,26 @@
           </div>
         </div>
       </div>
-      <!-- ToDo: add a randomButton to get a newRandomVerse -->
-        <div v-for="print in getPrints" :key="print.id" class="print-item" >
-          <!-- Assigning poetry(2verses) || poetry(1verse) or prose -->
-          <div @click="preview = print.verse || print ">
-            <!-- if selected from ShowCasePoetry -->
-            <div  v-if="print.verse"  v-for="verse in print.verse" :key="verse.id" class="verse"  >
-              <p >{{verse.first}}</p>
-              <p  dir="ltr" >{{verse.sec}}</p>
-            </div>
-            <!-- if selected from  ShowCasePoem -->
-            <div v-else-if="print.first"  class="verse" >
-              <p >{{print.first}}</p>
-              <p  dir="ltr" >{{print.sec}}</p>
-            </div>
-            <!-- if selected from  ShowCaseProse -->
-            <div v-else-if="print.qoute"  class="qoute" >
-              <p >{{print.qoute}}</p>
-            </div>
+      <div v-for="print in getPrints" :key="print.id" class="print-item" >
+        <!-- Assigning poetry(2verses) || poetry(1verse) or prose -->
+        <div @click="preview = print.verse || print ">
+          <!-- if selected from ShowCasePoetry -->
+          <div  v-if="print.verse"  v-for="verse in print.verse" :key="verse.id" class="verse"  >
+            <p >{{verse.first}}</p>
+            <p  dir="ltr" >{{verse.sec}}</p>
           </div>
-          <button @click="removePrint(print)">X</button>
+          <!-- if selected from  ShowCasePoem -->
+          <div v-else-if="print.first"  class="verse" >
+            <p >{{print.first}}</p>
+            <p  dir="ltr" >{{print.sec}}</p>
+          </div>
+          <!-- if selected from  ShowCaseProse -->
+          <div v-else-if="print.qoute"  class="qoute" >
+            <p >{{print.qoute}}</p>
+          </div>
         </div>
+        <button @click="removePrint(print)">X</button>
+      </div>
     </section>
   </div>
 </template>
@@ -130,7 +129,6 @@ function addProduct() {
     return products.value.push(product);
   }
 }
-// bug: it doesn't assign for the first run
 const chosenVerseStore = useChosenVerseStore();
 function getRandomPoetry(num) {
   chosenVerseStore.fetchRandomChosenVerses(num);

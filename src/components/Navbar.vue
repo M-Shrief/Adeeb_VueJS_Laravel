@@ -1,7 +1,7 @@
 <template>
   <!-- Navigation Raws -->
   <nav id="nav-raw" dir="rtl">
-    <router-link to="/" id="logo">آديب</router-link>
+    <router-link to="/" id="logo">أديب</router-link>
     <div>
       <router-link  :to="'/printing'" class="nav-item" active-class="active" >الطباعة</router-link>
       <router-link  :to="'/orders'" class="nav-item" active-class="active" >الطلبات</router-link>
