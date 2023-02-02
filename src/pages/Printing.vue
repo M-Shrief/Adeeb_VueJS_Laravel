@@ -121,9 +121,6 @@ function addProduct() {
       fontColor,      
       backgroundColor,
     };
-  // if(product.print.value ) {
-    // console.log(product.print.value);
-  // }
   let productIndex = products.value.map(product => product.print).indexOf(productPrint);
   if (!(productIndex !== -1)) {
     return products.value.push(product);

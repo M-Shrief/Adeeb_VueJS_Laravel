@@ -21,6 +21,17 @@ export const useOrdersStore = defineStore("order", {
         alert(error)
         console.log(error)
       }
+    },
+    async newOrder(order)  {
+      try {
+        let apiOrder = `http://localhost:3000/api/order/store`;
+        await axios.post(apiOrder, order).then(res => {
+          router.push('/orders')
+        });
+      }
+      catch (error) {
+        alert(error)
+      }
     }
   }
 })

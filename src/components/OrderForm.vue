@@ -33,8 +33,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import {useRouter } from 'vue-router';
-import axios from "axios";
+import { useOrdersStore } from '../stores/orders';
 
 const router = useRouter();
 
@@ -61,18 +60,7 @@ const confirmOrder = async () =>  {
     address,
     products: props.products
   }
-
-  try {
-    let apiOrder = "http://localhost:8000/api/order/store";
-    await axios.post(apiOrder, {"order": order}).then(res => {
-      console.log(res);
-    });
-    router.push('/orders')
-  }
-  catch (error) {
-    alert(error)
-    console.log(error)
-  }
+  orderStore.newOrder(order);
 };
 </script>
 
