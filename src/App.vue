@@ -11,7 +11,9 @@
   <header>
     <Navbar />
   </header>
-  <RouterView />
+  <Transition name="fade">
+    <RouterView :key="route.path" />
+  </Transition>
   <KeepAlive>
     <SelectedPrints dir="rtl" v-if="route.name != 'printing'"/> 
   </KeepAlive>
