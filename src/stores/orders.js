@@ -22,7 +22,7 @@ export const useOrdersStore = defineStore('order', {
         console.log(error);
       }
     },
-    async newOrder(order) {
+    newOrder(order) {
       try {
         let apiOrder = `${import.meta.env.VITE_API_URL}/order/store`;
         axios.post(apiOrder, order);
