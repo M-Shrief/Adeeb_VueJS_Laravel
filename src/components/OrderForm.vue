@@ -33,6 +33,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+// stores
 import { useOrdersStore } from '../stores/orders';
 
 const router = useRouter();
@@ -60,7 +62,9 @@ const confirmOrder = async () =>  {
     address,
     products: props.products
   }
-  orderStore.newOrder(order);
+  await orderStore.newOrder(order).then(() => {
+    router.push('/orders');
+  })
 };
 </script>
 

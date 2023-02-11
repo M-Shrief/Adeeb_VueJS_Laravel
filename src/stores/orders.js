@@ -25,9 +25,7 @@ export const useOrdersStore = defineStore('order', {
     async newOrder(order) {
       try {
         let apiOrder = `${import.meta.env.VITE_API_URL}/order/store`;
-        await axios.post(apiOrder, order).then((res) => {
-          router.push('/orders');
-        });
+        axios.post(apiOrder, order);
       } catch (error) {
         alert(error);
       }
