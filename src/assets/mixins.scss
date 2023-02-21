@@ -15,7 +15,19 @@ $breakpoint-xl: 1280px; // default development size
   }
 }
 
-@mixin print-button {
+@mixin fade-transition {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
+
+@mixin add-print-btn {
   background: $secondaryColor;
   border: 1px solid $mainColor;
   position: absolute;
@@ -40,14 +52,24 @@ $breakpoint-xl: 1280px; // default development size
   }
 }
 
-@mixin fade-transition {
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s ease-in-out;
-  }
+@mixin submit-btn {
+  border: none;
+  border-radius: 1.5rem;
+  background: #e0f2e9;
+  color: #1f2124;
+  padding: 0.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
 
-  .fade-enter-from,
-  .fade-leave-to {
-    opacity: 0;
+  @include mQ($breakpoint-md) {
+    margin: 0.5rem auto;
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+  @include mQ($breakpoint-sm) {
+    margin: 0.3rem auto;
+    padding: 0.1rem;
+    font-size: 0.7rem;
   }
 }

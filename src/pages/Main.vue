@@ -1,28 +1,28 @@
 <template>
   <main dir="rtl">
-    <h1 >أديب</h1>
-    <p >لطباعة الادب العربي شعراً ونثراً</p>
-    <div  dir="rtl" class="container"> 
+    <h1>أديب</h1>
+    <p>لطباعة الادب العربي شعراً ونثراً</p>
+    <div dir="rtl" class="container">
       <!-- Add Pagination -->
-      <ShowCasePoems :poems="getPoems"  :grid="'grid'">
+      <ShowCasePoems :poems="getPoems" :grid="'grid'">
         <h2 class="poems-title">القصائد</h2>
-      </ShowCasePoems>    
+      </ShowCasePoems>
 
-      <ShowCasePoets :poets="getPoets"  :grid="'grid'">
+      <ShowCasePoets :poets="getPoets" :grid="'grid'">
         <h2 class="poets-title">الشعراء</h2>
       </ShowCasePoets>
 
-      <ShowCasePoetry :chosenVerses="getChosenVerses" :grid="'grid-main'" 
-      @print="(print) => addPrint(print)"/>
+      <ShowCasePoetry :chosenVerses="getChosenVerses" :grid="'grid-main'"
+        @print="(print) => addPrint(print)" />
 
-      <ShowCaseProse :proses="getProses"
-      @print="(print) => addPrint(print)"/>
+      <ShowCaseProse :proses="getProses" @print="(print) => addPrint(print)" />
     </div>
-  </main>  
+    <SelectedPrints />
+  </main>
 </template>
 
 <script setup>
-import {  onMounted, computed } from 'vue';
+import { onMounted, computed } from 'vue';
 // stores
 import { usePoemStore } from "../stores/poems";
 import { usePoetStore } from "../stores/poets";
@@ -34,8 +34,7 @@ import ShowCasePoems from '../components/ShowCasePoems.vue';
 import ShowCasePoets from '../components/ShowCasePoets.vue';
 import ShowCasePoetry from '../components/ShowCasePoetry.vue';
 import ShowCaseProse from '../components/ShowCaseProse.vue';
-
-
+import SelectedPrints from '../components/SelectedPrints.vue';
 
 const poemsStore = usePoemStore();
 const getPoems = computed(() => {
@@ -74,13 +73,16 @@ function addPrint(print) {
 <style lang="scss" scoped>
 @import '../assets/mixins.scss';
 
-h1, p{
+h1,
+p {
   text-align: center;
 }
+
 h1 {
   font-size: 4rem;
 }
-p  {
+
+p {
   font-size: 1.5rem;
 }
 
@@ -89,64 +91,83 @@ p  {
   display: grid;
   grid-template-columns: 70% 30%;
 }
-.poems-title , .poets-title  {
+
+.poems-title,
+.poets-title {
   text-align: center;
   padding: 0.3rem;
   border-radius: 1.5rem;
   width: 50%;
   margin: 1rem auto;
 }
+
 .poems-title {
   background-color: #f6b352;
   color: #1f2124;
 }
+
 .poets-title {
   background-color: #2c3e50;
   color: #FBE6C2;
 }
+
 @include mQ($breakpoint-lg) {
   h1 {
     font-size: 2.5rem;
   }
+
   p {
     font-size: 1.5rem;
   }
+
   .container {
     grid-template-columns: 65% 35%;
   }
-  .poems-title, .poets-title{
+
+  .poems-title,
+  .poets-title {
     padding: 0.3rem;
     margin: 0.6rem auto;
     font-size: 1.3rem;
   }
 }
+
 @include mQ($breakpoint-md) {
   h1 {
     font-size: 2rem;
   }
+
   p {
     font-size: 1.2rem;
   }
+
   .container {
     grid-template-columns: 65% 35%;
   }
-  .poems-title, .poets-title {
+
+  .poems-title,
+  .poets-title {
     padding: 0.2rem;
     margin: 0.5rem auto;
     font-size: 1.2rem;
   }
 }
+
 @include mQ($breakpoint-sm) {
   h1 {
     font-size: 1.6rem;
   }
+
   p {
     font-size: 1rem
   }
+
   .container {
     grid-template-columns: 65% 35%;
   }
-  .poems-title, .poets-title {
+
+  .poems-title,
+  .poets-title {
     padding: 0.1rem;
     margin: 0.3rem auto;
     font-size: 1rem;
