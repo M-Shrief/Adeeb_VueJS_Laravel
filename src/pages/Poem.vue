@@ -42,7 +42,7 @@ const getPoems = computed(() => {
 
 // updating poems store
 watch(() => route.params.id, (newPoemId) => {
-  poemStore.fetchPoemAndOtherPoems(route.params.id);
+  poemStore.fetchPoemAndOtherPoems(newPoemId);
 
 })
 
