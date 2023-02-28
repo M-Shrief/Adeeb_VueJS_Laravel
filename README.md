@@ -2,7 +2,7 @@
 
 A Sample project for
 ["Adeeb آديب"](https://github.com/M-Shrief/M-Shrief/blob/main/Overview-%2015th%20Jan.mp4 'check a preview here to download')
-using VueJS, Pinia and vue-router, connecting with a Node/Express API leveraging
+using VueJS, Pinia and vue-router, connecting with a PHP/Laravel API leveraging
 axios requests. While I'm using cypress for component testing.
 
 ## Aims and Goals

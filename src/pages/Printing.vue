@@ -58,7 +58,7 @@ import PrintCustomization from '../components/PrintCustomization.vue';
 import ShowCasePrints from '../components/ShowCasePrints.vue';
 import OrderForm from "../components/OrderForm.vue";
 
-let preview = ref([]);
+let preview = ref({});
 let randomPrint = ref();
 
 const orderStore = useOrderStore();
